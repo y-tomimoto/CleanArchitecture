@@ -1,0 +1,7 @@
+flask
+fastapi
+mysql-connector-python
+uvicorn
+pydantic
+python-multipart
+psycopg2

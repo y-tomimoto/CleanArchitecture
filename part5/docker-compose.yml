@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  api:
+    container_name: part5
+    build: ./app
+    tty: true
+    volumes:
+      - ./app:/usr/src/app
+    ports:
+      - 5000:5000
+    command: python3 main.py
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: test_database
+    volumes:
+      - ./db/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./db/mysql/init:/docker-entrypoint-initdb.d # sqlの初期化を実行する
+    ports:
+      - 3306:3306
